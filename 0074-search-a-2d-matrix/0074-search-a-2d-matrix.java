@@ -1,50 +1,29 @@
 class Solution {
     public boolean searchMatrix(int[][] matrix, int target) {
-    ArrayList<Integer> al = new ArrayList();
+        int rows = matrix.length , columns = matrix[0].length ;
 
-    for(int a[] : matrix)
-    { 
-        for(int b : a)
-        {
-            al.add(b);
+        int low = 0 , high = rows * columns -1 ;
+        int midIdx , midElement ; 
+
+        while(low <= high)
+        { 
+            midIdx = low + (high - low)/2 ; 
+            int midRow = midIdx/columns;
+            int midColumn = midIdx%columns ;
+
+            midElement = matrix[midRow][midColumn];
+
+            if(midElement == target)
+            return true;
+
+            else if(midElement < target)
+            low = midIdx +1 ;
+
+            else 
+            high = midIdx -1;
+            
         }
-    }
-
-    System.out.println(al);
-    
-
-    Integer[] arr = new Integer[al.size()];
-    arr = al.toArray(arr);
-
-    // Integer[] arr = al.toArray();
-
-
-    int n = arr.length;
-
-    int low = 0, high = n-1; 
-    boolean flag = false;
-    while(low <= high)
-    { 
-        int mid = low + (high - low)/2;
-        
-        if(arr[mid] == target)
-         { 
-             flag = true;
-             break;
-         }
-
-         else if(arr[mid] < target)
-         { 
-             low = mid + 1;
-         }
-
-         else
-         { 
-             high = mid -1;
-         }     
-    }
-
-
-    return flag;
+        return false;
     }
 }
+
