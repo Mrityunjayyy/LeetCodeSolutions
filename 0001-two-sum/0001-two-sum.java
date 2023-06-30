@@ -1,21 +1,36 @@
 class Solution {
     public int[] twoSum(int[] nums, int target) {
-      ArrayList<Integer> al = new ArrayList();
-        for(int i = 0 ; i < nums.length ; i++)
-        { 
-          for(int j = i+1 ; j < nums.length ; j++)
-          { 
-            if(nums[i] + nums[j] == target)
-            {
-            al.add(i);
-            al.add(j);
-            }
-          }
+        HashMap<Integer , Integer> map = new HashMap();
+        int n = nums.length;
+        for(int i = 0 ; i < n ; i++)
+        {//values of the array is key and the index is the value
+        map.put(nums[i] , i);
         }
+         
+        int[] result = new int[2];
+        Arrays.fill(result , -1);
+        
 
-        int[] result = new int[al.size()];
-        for(int i = 0 ; i < al.size() ; i++)
-        result[i] = al.get(i);
+        for(int i = 0 ; i < n ;i++)
+        { 
+            if(nums[i] == target && map.containsKey(0))
+            {
+                result[0] = i;
+                result[1] = map.get(0);
+                break;
+            }
+
+            else if(map.containsKey(target - nums[i]))
+            {  
+                //element is non repetable
+                if(map.get(target - nums[i]) > i)
+                {
+                    result[0] = i;
+                    result[1] = map.get(target - nums[i]);
+                    break;
+                }
+            }   
+        }
 
 
         return result;
