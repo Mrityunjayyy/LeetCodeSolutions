@@ -9,12 +9,14 @@ class Solution {
             if(c == '(' || c == '{' || c == '[')
             {
             stack1.push(c);
-            continue;
+            continue; //important to forst fully fill the stack with open brackets  
             }
-
+          
+          // koi khali bracket tha hi nahi, return false
             else if(stack1.empty())
             return false;
 
+//top element pop karwa lia
             char top = stack1.pop();
 
             if(top == '(' && c != ')')
