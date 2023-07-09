@@ -1,4 +1,7 @@
 class Solution {
+
+    // pw hashmap assignment question number 5 
+    // by gladden rumao sir
     public boolean canConstruct(String ransomNote, String magazine) {
        HashMap<Character , Integer> map1 = new HashMap<>();
        HashMap<Character , Integer> map2 = new HashMap<>();
