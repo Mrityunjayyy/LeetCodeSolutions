@@ -1,7 +1,9 @@
 class Solution {
     public int findKthLargest(int[] nums, int k) {
       int n = nums.length;
-      int m = quickSelect(nums , 0 , n-1 , k);  
+      int m = quickSelect(nums , 0 , n-1 , n - k +1 );  
+      // agar kth smallest element hai 
+      // to n - k + 1  (kth) largest element hoga
       return nums[m];
     }
 
@@ -40,7 +42,7 @@ class Solution {
 
         for(int j = low +1 ; j <= high ; j++)
         { 
-            if(arr[j] > pivot)  //descending order
+            if(arr[j] <= pivot)  //descending order
             {
                 i = i + 1;
 
