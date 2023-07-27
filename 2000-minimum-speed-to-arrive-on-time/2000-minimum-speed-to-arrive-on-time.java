@@ -1,6 +1,6 @@
 class Solution {
     public int minSpeedOnTime(int[] dist, double hour) {
-        if(hour<dist.length-1) return -1;
+       // if(hour<dist.length-1) return -1;
         int l = 1;
         int r = 10_000_000; //question contraints 10^7
         int m;
