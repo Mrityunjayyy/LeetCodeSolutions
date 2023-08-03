@@ -25,12 +25,13 @@ class Solution {
      public void backtrack( String digits, List<String> ans,
         String cur, int index )
          {
-        if (cur.length() == digits.length()) {
+        if (cur.length() == digits.length())
+         {
             ans.add(cur);
             return;
-        } else if (index >= digits.length()) {
-            return;
-        } else {
+            }
+        
+        else {
             String digit = digitToChar.get(digits.charAt(index));
             for (char c : digit.toCharArray()) {
                 backtrack(digits, ans, cur + c, index + 1);
