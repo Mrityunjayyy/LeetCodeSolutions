@@ -7,25 +7,17 @@ class Solution {
 
     public int subSets(int[] coins , int sum , int n)
     {
-        int[][] t = new int[n+1][sum+1];
+        int[] t = new int[sum+1];
+        t[0] = 1;
 
-        t[0][0] =1;
-
-        for(int i =1 ; i < n+1 ; i++)
+        for(int i = 0 ; i < n ; i++)
         {
-            for(int j = 0 ; j < sum +1 ; j++)
+            for(int j = coins[i] ; j <= sum ; j++)
             {
-                if(coins[i-1] <= j)
-                {
-                    t[i][j] = t[i][j - coins[i-1]] + t[i-1][j];
-                }
-                else 
-                {
-                    t[i][j] = t[i-1][j];
-                }
+                t[j] = t[j] + t[j - coins[i]];
             }
         }
 
-        return t[n][sum];
+        return t[sum];
     }
 }
