@@ -19,16 +19,15 @@ class Solution {
                 if(a[i-1] == b[j-1] )
                 {
                     t[i][j] = 1 + t[i-1][j-1];
-                }      
-                if(t[i][j] > max)
+                }     
+                if(max < t[i][j])
                 {
                     max = t[i][j];
                 }
-                else if(a[i-1] != b[j-1])
+                else if(a[i-1] != b[j-1] )
                 {
                     t[i][j] = 0;
-                }
-        
+                } 
             }
         }
 
