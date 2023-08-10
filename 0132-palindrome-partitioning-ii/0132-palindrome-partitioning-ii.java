@@ -37,7 +37,11 @@ class Solution {
             //     t[i][k] = left;
             // }
 
-            int right;
+           
+
+            if(isPalindrome(s , i ,k) == true)
+            {   
+                 int right;
             if(t[k+1][j] != -1)
             {
                 right = t[k+1][j];
@@ -47,9 +51,8 @@ class Solution {
                 right = solve(s , k+1 , j);
                 t[k+1][j] = right;
             }
-
-            if(isPalindrome(s , i ,k) == true)
-            {   int temp_ans = 1 + right;
+                
+                int temp_ans = 1 + right;
 
             if(temp_ans  < min)
             {
