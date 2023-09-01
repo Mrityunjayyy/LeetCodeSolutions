@@ -1,13 +1,12 @@
 class Solution {
     public List<String> letterCasePermutation(String s) {
-        s = s.toLowerCase();
-        HashSet<String> ans = new HashSet();
+        List<String> ans = new ArrayList();
         solve(ans ,s , "");
-        return new ArrayList<String>(ans);
+        return ans;
     }
 
 
-    public void solve(HashSet<String> ans , String ip , String op)
+    public void solve(List<String> ans , String ip , String op)
     {
         if(ip.length() ==0)
         {
@@ -15,24 +14,32 @@ class Solution {
             return;
         }
 
-        String op1 = op;
-        String op2 = op;
-
-        if(Character.isDigit(ip.charAt(0)) )
+        if(Character.isLetter(ip.charAt(0)) )
         {
-            op1 = op1 + ip.charAt(0);
-            op2 = op2 + ip.charAt(0);
+            String op1 = op;
+            String op2 = op;
+
+
+            op1 = op1 + Character.toUpperCase(ip.charAt(0));
+            op2 = op2 + Character.toLowerCase(ip.charAt(0));
+
+            ip = ip.substring(1);
+            solve(ans , ip , op1);
+            solve(ans , ip , op2);
+
+            
         }
         else 
         {
-            op1 = op1 + Character.toUpperCase(ip.charAt(0));
-            op2 = op2 + ip.charAt(0);
+            String op1 = op;
+            op1 = op1 + ip.charAt(0);
+            ip = ip.substring(1);
+            solve(ans , ip , op1);    
         }
 
-        ip = ip.substring(1);
+       
 
-        solve(ans , ip , op1);
-        solve(ans , ip , op2);
+     
         
     }
 }
